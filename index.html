@@ -51,10 +51,34 @@
         </div>
     </div>
 
+
+
+
+
+
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAcDzApKSVr8BBYlsP-aBiGDBKXR1-EKhI",
+    authDomain: "d3-firebase-479f8.firebaseapp.com",
+    databaseURL: "https://d3-firebase-479f8.firebaseio.com",
+    projectId: "d3-firebase-479f8",
+    storageBucket: "d3-firebase-479f8.appspot.com",
+    messagingSenderId: "419862970694"
+  };
+  firebase.initializeApp(config);
+  const db = firebase.firestore();
+  const settings = {timestampsInSnapshots: true};
+  db.settings(settings);
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.js"></script>
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="index.js"></script>
 <script src="graph.js"></script>
+
 </body>
 </html>
