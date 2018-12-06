@@ -20,9 +20,29 @@ const pie = d3.pie()
 const arcPath = d3.arc()
                 .outerRadius(dims.radius)
                 .innerRadius(dims.radius/2);
+
+// D3 Scheme to give generated colors
+const color = d3.scaleOrdinal(d3['schemeSet3']);
 // Update function
 const update = (data) => {
-    console.log(data)
+    // update color scale
+    color.domain(data.map(d => d.name));
+    // Create pie chart
+    const paths = graph.selectAll('path')
+    // join data with dimensions to paths
+                        .data(pie(data));
+    // handle exit selection
+    paths.exit().remove()
+    // handle dom path updates
+    paths.attr('d', arcPath)
+    //
+    paths.enter()
+         .append('path')
+         .attr('class', 'arc')
+         .attr('d', arcPath)
+         .attr('stroke', '#fff')
+         .attr('stroke-width', 3)
+         .attr('fill', d => color(d.data.name))
 }
 
 // Get data from firestore
